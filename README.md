@@ -1,7 +1,7 @@
 # REIPER
                                            .""--.._
                                            []      `'--.._
-                                           ||__      DNS   `'-,
+                                           ||__            `'-,
                                          `)||_ ```'--..        \
                      _                    /|//}        ``--._   |
                   .'` `'.                /////}              `\ /
@@ -18,8 +18,9 @@
         |       `\_|    |/      ,.__. \ |  ||
         /                     /`    `\ ||  ||
 
-The idea to do this originated in 2020. I was fuzzing URLs, but I'd get blocked pretty quickly, so I wanted to change my IP often.
-
+The idea to do this originated in 2020. I was fuzzing URLs, but I'd get blocked pretty quickly, so I wanted to change my IP often.  
+  
+REIPER currently:
 1. Disassociates an EC2 instances's EIP
 2. Releases the EIP from the AWS EIP Pool
 3. Allocates a new EIP to the AWS EIP Pool
