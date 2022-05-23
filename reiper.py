@@ -2,6 +2,7 @@
 
 import boto3
 import requests
+# IDK if I need to import JSON TBH
 import json
 
 AWS_REGION = ""
