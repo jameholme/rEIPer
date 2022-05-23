@@ -23,7 +23,7 @@
 3. Allocates a new EIP to the AWS EIP Pool
 4. Associates the new EIP to the EC2 instace
 5. Does "stuff" from the newly associated EIP  
-  5a. Currently records the EIP to a log file   
+  5a. Currently records the EIP to a file   
   
 ## Requirements:
 * AWS Account with appropriate permissions to interact with the AWS API, VPC, EC2, and S3 Resources
