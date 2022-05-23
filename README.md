@@ -9,10 +9,10 @@
                 /  /_  _`\\            // `||
                 | |(X)(X)||          _//   ||
                 | |  /\  )|        _///\   ||
-                | |L====J |       / |/ |   ||   Rotate 
-               /  /'-..-' /    .'`  \  |   ||   EIP 
-              /   |  :: | |_.-`      |  \  ||   Every
-             /|   `\-::.| |          \   | ||   Round   
+                | |L====J |       / |/ |   ||    
+               /  /'-..-' /    .'`  \  |   ||   
+              /   |  :: | |_.-`      |  \  ||   
+             /|   `\-::.| |          \   | ||      
            /` `|   /    | |          |   / ||
          |`    \   |    / /          \  |  ||
         |       `\_|    |/      ,.__. \ |  ||
@@ -24,7 +24,7 @@
 4. Associates the new EIP to the EC2 instace
 5. Does "stuff" from the newly associated EIP
   
-## To-do List:
+## Idea List:
 * Create a loop to do this en masse
 * Collect every EIP the EC2 Instance sees
   * Instead of storing the EIP data locally, send it to S3 Bucket(s)
@@ -32,3 +32,6 @@
   * Put a REIPER in each Region
 * Come up with a way to analyze the data in a meaningful way
   * OpenSearch in AWS? Can be used to create Dashboards and Visualizations
+* Compare the EIPs Collected by the REIPERs against Grey Noise
+  * Use Grey Noise tags to identify who last owned the EIP
+  * Use Grey Noise tags to identify if an EIP has been used Maliciously
