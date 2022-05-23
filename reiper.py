@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 
-# Variables that need updating to reflect your Cloud Environment:
-# # # AWS_REGION; INSTANCE_ID
-# Additional Considerations:
-# # # Ensure the EC2 you expect to run the actions from already has an EIP (it likley does if you were able to upload this file to it, I guess?)
-
 import json
 import boto3
 import requests
@@ -15,7 +10,7 @@ EC2_RESOURCE = boto3.resource('ec2', region_name=AWS_REGION)
 INSTANCE_ID = ""
 
 ####################################################################
-# Dissociate EIP from EC2
+# Disassociates an EC2 instances's EIP
 instance = EC2_RESOURCE.Instance(INSTANCE_ID)
 
 response = EC2_CLIENT.describe_addresses(
@@ -36,7 +31,7 @@ response = EC2_CLIENT.disassociate_address(
 print(f'EIP {public_ip} diassociated from the instance {INSTANCE_ID}')
 
 ####################################################################
-# Releases EIP from the AWS Account
+# Releases the EIP from the AWS EIP Pool
 response = EC2_CLIENT.describe_addresses(
     Filters=[
         {
@@ -55,7 +50,7 @@ EC2_CLIENT.release_address(
 print(f'EIP {public_ip} has been released')
 
 ####################################################################
-# Allocates EIP
+# Allocates a new EIP to the AWS EIP Pool
 allocation = EC2_CLIENT.allocate_address(
     Domain='project',
     TagSpecifications=[
@@ -72,7 +67,7 @@ allocation = EC2_CLIENT.allocate_address(
 )
 
 ####################################################################
-# Attaches EIP to EC2 (see INSTANCE_ID variable)
+# Associates the new EIP to the EC2 instace
 response = EC2_CLIENT.describe_addresses(
     Filters=[
         {
@@ -93,7 +88,8 @@ response = EC2_CLIENT.associate_address(
 print(f'EIP {public_ip} associated with the instance {INSTANCE_ID}')
 
 ####################################################################
-# Write new EIP to file 
+# Does "stuff" from the newly associated EIP
+# Writes the new EIP to a file
 response = EC2_CLIENT.describe_addresses(
     Filters=[
         {
