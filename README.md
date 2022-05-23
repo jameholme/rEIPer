@@ -22,7 +22,13 @@
 2. Releases the EIP from the AWS EIP Pool
 3. Allocates a new EIP to the AWS EIP Pool
 4. Associates the new EIP to the EC2 instace
-5. Does "stuff" from the newly associated EIP
+5. Does "stuff" from the newly associated EIP  
+  
+## Requirements:
+* AWS Account with appropriate permissions to interact with the AWS API, VPC, EC2, and S3 Resources
+* Python3 + Pip
+  * Boto3
+  * Requests  
   
 ## Idea List:
 * Create a loop to do this en masse
