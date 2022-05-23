@@ -25,8 +25,10 @@
 5. Does "stuff" from the newly associated EIP
   
 ## To-do List:
-* Collect every EIP the EC2 instance sees
 * Create a loop to do this en masse
-* Create a way to do this in every region
+* Collect every EIP the EC2 Instance sees
+  * Instead of storing the EIP data locally, send it to S3 Bucket(s)
+* Create a way to do this in every Region
   * Put a REIPER in each Region
 * Come up with a way to analyze the data in a meaningful way
+  * OpenSearch in AWS? Can be used to create Dashboards and Visualizations
