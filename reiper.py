@@ -100,5 +100,5 @@ response = EC2_CLIENT.describe_addresses(
 
 public_ip = response['Addresses'][0]['PublicIp']
 print("REIPER EIP: " + str(public_ip) + " HAS BEEN RECORDED IN REIPER.LOG")
-with open("REIPER.log",'a') as f:
+with open("REIPER.log",'ab') as f:
     f.write(public_ip)
