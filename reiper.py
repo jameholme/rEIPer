@@ -16,7 +16,7 @@ response = EC2_CLIENT.describe_addresses(
     Filters=[
         {
             'Name': 'tag:Name',
-            'Values': ['REIPER']
+            'Values': ['REIPER-EIP']
         }
     ]
 )
@@ -27,7 +27,7 @@ response = EC2_CLIENT.disassociate_address(
     PublicIp=public_ip,
 )
 
-print(f'EIP {public_ip} diassociated from the instance {INSTANCE_ID}')
+print(f'REIPER EIP {public_ip} disassociated from REIPER ID: {INSTANCE_ID}')
 
 ####################################################################
 # Releases the EIP from the AWS EIP Pool
@@ -35,7 +35,7 @@ response = EC2_CLIENT.describe_addresses(
     Filters=[
         {
             'Name': 'tag:Name',
-            'Values': ['REIPER']
+            'Values': ['REIPER-EIP']
         }
     ]
 )
@@ -46,7 +46,7 @@ allocation_id = response['Addresses'][0]['AllocationId']
 EC2_CLIENT.release_address(
     AllocationId=allocation_id
 )
-print(f'EIP {public_ip} has been released')
+print(f'REIPER EIP {public_ip} has been released')
 
 ####################################################################
 # Allocates a new EIP to the AWS EIP Pool
@@ -58,7 +58,7 @@ allocation = EC2_CLIENT.allocate_address(
             'Tags': [
                 {
                     'Key': 'Name',
-                    'Value': 'REIPER'
+                    'Value': 'REIPER-EIP'
                 },
             ]
         },
@@ -71,7 +71,7 @@ response = EC2_CLIENT.describe_addresses(
     Filters=[
         {
             'Name': 'tag:Name',
-            'Values': ['REIPER']
+            'Values': ['REIPER-EIP']
         }
     ]
 )
@@ -84,7 +84,7 @@ response = EC2_CLIENT.associate_address(
     AllocationId=allocation_id
 )
 
-print(f'EIP {public_ip} associated with the instance {INSTANCE_ID}')
+print(f'REIPER EIP {public_ip} associated with REIPER ID: {INSTANCE_ID}')
 
 ####################################################################
 # Does "stuff" from the newly associated EIP
@@ -93,11 +93,12 @@ response = EC2_CLIENT.describe_addresses(
     Filters=[
         {
             'Name': 'tag:Name',
-            'Values': ['REIPER']
+            'Values': ['REIPER-EIP']
         }
     ]
 )
 
 public_ip = response['Addresses'][0]['PublicIp']
-with open("eip",'a') as f:
+print("REIPER EIP: " + str(public_ip) + " HAS BEEN RECORDED IN REIPER.LOG")
+with open("REIPER.log",'a') as f:
     f.write(public_ip)
