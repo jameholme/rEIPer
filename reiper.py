@@ -2,7 +2,6 @@
 
 import boto3
 import requests
-# IDK if I need to import JSON TBH
 import json
 
 AWS_REGION = ""
@@ -12,18 +11,18 @@ INSTANCE_ID = ""
 INSTANCE = EC2_RESOURCE.Instance(INSTANCE_ID)
 
 def ACTION():
-    # Should probably organize the URLs better and throw it into a loop
+# Creates a web request and saves the response to a file
     url0 = "https://ifconfig.me"
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"}
     for i in range(1):
         r0 = requests.get(url0, timeout=10)
         print("url0: " + str(url3) + ": " + str(r0))
-        with open("/home/ec2-user/ifconfig.html",'ab') as f:
+        with open("/home/ec2-user/REIPER-IPs.html",'ab') as f:
             f.write(r0.content + b"\n")
 
 def REIPER():
     try:
-    # Check to see if an EIP is already assigned to the EC2 Instance
+# Check to see if an EIP is already assigned to the EC2 Instance
         response = EC2_CLIENT.describe_addresses(
             Filters=[
                 {
@@ -34,9 +33,9 @@ def REIPER():
         )
         PUBLIC_IP = response['Addresses'][0]['PublicIp']
         print(str(PUBLIC_IP) + " already assigned to " + str(INSTANCE_ID))
-    # If an EIP is already assigned do action below
+# If an EIP is already assigned do action below
         ACTION()
-    # Disassociate the EIP from the EC2 Instance
+# Disassociate the EIP from the EC2 Instance
         response = EC2_CLIENT.describe_addresses(
             Filters=[
                 {
@@ -50,7 +49,7 @@ def REIPER():
             PublicIp=PUBLIC_IP,
         )
         print(f'EIP {PUBLIC_IP} diassociated from the instance {INSTANCE_ID}')
-    # Releases EIP from the AWS Account
+# Releases EIP from the AWS Account
         response = EC2_CLIENT.describe_addresses(
             Filters=[
                 {
@@ -65,7 +64,7 @@ def REIPER():
             AllocationId=allocation_id
         )
         print(f'EIP {PUBLIC_IP} has been released')
-    # Allocates EIP
+# Allocates EIP to the AWS Account
         allocation = EC2_CLIENT.allocate_address(
             Domain='project',
             TagSpecifications=[
@@ -80,7 +79,7 @@ def REIPER():
                 },
             ]
         )
-    # Attaches EIP to EC2
+# Attaches EIP to the EC2 Instance
         response = EC2_CLIENT.describe_addresses(
             Filters=[
                 {
@@ -97,10 +96,10 @@ def REIPER():
         )
         print(f'EIP {PUBLIC_IP} associated with the instance {INSTANCE_ID}')
 
-    # If EIP is not assigned and errors out with an Index Error do action below
+# If EIP is not assigned and errors out with an Index Error do action below
     except IndexError:
         print("No EIP assigned to " + str(INSTANCE_ID))
-    # Allocates EIP
+# Allocates EIP to the AWS Account
         allocation = EC2_CLIENT.allocate_address(
             Domain='project',
             TagSpecifications=[
@@ -115,7 +114,7 @@ def REIPER():
                 },
             ]
         )
-    # Attaches EIP to EC2
+# Attaches EIP to the EC2 Instance
         response = EC2_CLIENT.describe_addresses(
             Filters=[
                 {
@@ -131,9 +130,9 @@ def REIPER():
             AllocationId=allocation_id
         )
         print(f'EIP {PUBLIC_IP} associated with the instance {INSTANCE_ID}')
-    # Now that an EIP is attached do action below
+# Now that an EIP is attached to the EC2 do action below
         ACTION()
-    # Disassociate the EIP from the EC2 Instance after action is done
+# Disassociate the EIP from the EC2 Instance after action is done
         response = EC2_CLIENT.describe_addresses(
             Filters=[
                 {
@@ -147,7 +146,7 @@ def REIPER():
             PublicIp=PUBLIC_IP,
         )
         print(f'EIP {PUBLIC_IP} diassociated from the instance {INSTANCE_ID}')
-    # Releases EIP from the AWS Account
+# Releases EIP from the AWS Account
         response = EC2_CLIENT.describe_addresses(
             Filters=[
                 {
@@ -162,7 +161,7 @@ def REIPER():
             AllocationId=allocation_id
         )
         print(f'EIP {PUBLIC_IP} has been released')
-    # Allocates EIP
+# Allocates EIP to the AWS Account
         allocation = EC2_CLIENT.allocate_address(
             Domain='project',
             TagSpecifications=[
@@ -177,7 +176,7 @@ def REIPER():
                 },
             ]
         )
-    # Attaches EIP to EC2
+# Attaches EIP to EC2
         response = EC2_CLIENT.describe_addresses(
             Filters=[
                 {
