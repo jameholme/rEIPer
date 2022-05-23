@@ -34,8 +34,8 @@
   
 ## Idea List:
 * Create a loop to do this en masse
-* Collect every EIP the EC2 Instance sees
-  * Instead of storing the EIP data locally, send it to S3 Bucket(s)
+* Collect every EIP the EC2 Instance sees (DONE)
+  * Instead of storing the EIP data locally, send it to S3 Bucket(s) (NOT DONE)
 * Create a way to do this in every Region
   * Put a REIPER in each Region
 * Come up with a way to analyze the data in a meaningful way
