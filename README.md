@@ -34,4 +34,4 @@
   * OpenSearch in AWS? Can be used to create Dashboards and Visualizations
 * Compare the EIPs Collected by the REIPERs against Grey Noise
   * Use Grey Noise tags to identify who last owned the EIP
-  * Use Grey Noise tags to identify if an EIP has been used Maliciously
+  * Use Grey Noise tags to identify if an EIP has been used Maliciously and if so, how?
