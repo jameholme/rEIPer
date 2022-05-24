@@ -32,7 +32,7 @@ def REIPER():
             ]
         )
         PUBLIC_IP = RESPONSE['Addresses'][0]['PublicIp']
-        print(str(PUBLIC_IP) + " already assigned to " + str(INSTANCE_ID))
+        print(str(PUBLIC_IP) + " assigned to " + str(INSTANCE_ID))
 # If an EIP is already assigned do action below
         ACTION()
 # Disassociate the EIP from the EC2 Instance
@@ -98,7 +98,7 @@ def REIPER():
 
 # If EIP is not assigned and errors out with an Index Error do action below
     except IndexError:
-        print("No EIP assigned to " + str(INSTANCE_ID))
+        print("No REIP assigned to " + str(INSTANCE_ID))
 # Allocates EIP to the AWS Account
         allocation = EC2_CLIENT.allocate_address(
             Domain='vpc',
