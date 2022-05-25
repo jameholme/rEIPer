@@ -17,13 +17,15 @@
          |`    \   |    / /          \  |  ||
         |       `\_|    |/      ,.__. \ |  ||
         /                     /`    `\ ||  ||
-  
+
+The idea to do ths originated back in 2020. I was fuzzing URLs, but I would get blocked by the web host pretty quickly, so I wanted to change my IP often.
+
 1. Disassociates an EC2 instances's EIP
 2. Releases the EIP from the AWS EIP Pool
 3. Allocates a new EIP to the AWS EIP Pool
 4. Associates the new EIP to the EC2 instace
 5. Does "stuff" from the newly associated EIP  
-  5a. Currently records the EIP to a file   
+  5a. Currently records the EIPs to a file   
   
 ## Requirements:
 * AWS Account with appropriate permissions to interact with the AWS API, VPC, EC2, and S3 Resources
