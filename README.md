@@ -18,7 +18,7 @@
         |       `\_|    |/      ,.__. \ |  ||
         /                     /`    `\ ||  ||
 
-The idea to do ths originated back in 2020. I was fuzzing URLs, but I would get blocked by the web host pretty quickly, so I wanted to change my IP often.
+The idea to do this originated in 2020. I was fuzzing URLs, but I would get blocked by the web host pretty quickly, so I wanted to change my IP often.
 
 1. Disassociates an EC2 instances's EIP
 2. Releases the EIP from the AWS EIP Pool
