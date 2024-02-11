@@ -33,11 +33,21 @@
 * EC2 Instance with an EIP and the AWS CLI configured
 * Python3 + Pip
   * Boto3
-  * Requests  
+  * Requests
+   
+#### Usage:  
+`python reiper.py [-h] [-region] [-instance-id]`
+
+#### Arguments:
+`-h` Show this help message and exit
+`-region` The AWS Region the EC2 Instance resides in
+`-instance-id` The Instance ID of the EC2 Instance
   
 #### Idea List:
+* Loop it?
 * Create a way to do this in every Region
   * Put a REIPER in each Region
 * Come up with a way to analyze the data in a meaningful way
   * OpenSearch in AWS? Can be used to create Dashboards and Visualizations
 * Compare the EIPs Collected by the REIPERs against a threat intelligence tool
+  * This could tell us who last used this EIP and what they used it for
