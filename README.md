@@ -39,9 +39,9 @@
 `python reiper.py [-h] [-region] [-instance-id]`
 
 #### Arguments:
-`-h` Show this help message and exit
-`-region` The AWS Region the EC2 Instance resides in
-`-instance-id` The Instance ID of the EC2 Instance
+`-h` Show this help message and exit  
+`-region` The AWS Region the EC2 Instance resides in  
+`-instance-id` The Instance ID of the EC2 Instance  
   
 #### Idea List:
 * Loop it?
