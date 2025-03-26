@@ -1,4 +1,4 @@
-# REIPER
+# rEIPer
 ```
                                            .""--.._
                                            []      `'--.._
@@ -21,7 +21,7 @@
 jgs
 ```
   
-#### REIPER currently:
+#### rEIPer currently:
 1. Disassociates an EC2 instances's EIP
 2. Releases the EIP from the AWS EIP Pool
 3. Allocates a new EIP to the AWS EIP Pool
@@ -50,8 +50,8 @@ Example: `python reiper.py -region us-east-1 -instance-id i-02faad1c6dc7654a6`
 #### Idea List:
 * Loop it?
 * Create a way to do this in every Region
-  * Put a REIPER in each Region
+  * Put a rEIPer in each Region
 * Come up with a way to analyze the data in a meaningful way
   * OpenSearch in AWS? Can be used to create Dashboards and Visualizations
-* Compare the EIPs Collected by the REIPERs against a threat intelligence tool
+* Compare the EIPs Collected by the rEIPers against a threat intelligence tool
   * This could tell us who last used this EIP and what they used it for
